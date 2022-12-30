@@ -1,0 +1,25 @@
+#alert-button{
+    all:initial;
+    cursor: pointer;
+    float: none;
+    position: absolute;
+    right: 10px;
+    top:50%;
+    margin-top: -10px;
+}
+
+#alertPanel{
+    margin: auto;
+}
+
+.canvas-container {
+    position: relative;
+    width:100%;
+    height: 500px;
+  }
+  
+  #canvas {
+    position:relative;
+    height: 500px;
+    width:100%;
+  }
