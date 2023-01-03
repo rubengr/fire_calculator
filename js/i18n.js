@@ -48,7 +48,9 @@ $(function () {
               mOutOfMoney: 'With the current anual spending money you will run out of money at the age of ',
               tAnualSpending: 'Net anual spending in retirement.',
               savings: 'Savings',
-              tPortfolio: 'Portfolio value with anual spending after retirement'
+              tPortfolio: 'Portfolio value with anual spending after retirement',
+              tAbout: 'About',
+              tContact: 'Contact'
             }
             // here we will place our translations...
           }
@@ -76,7 +78,9 @@ $(function () {
               mOutOfMoney: 'Con el dinero actual para gastos anuales, se quedará sin dinero a la edad de ',
               tAnualSpending: 'Gasto neto anual en jubilación.',
               savings: 'Ahorros',
-              tPortfolio: 'Valor de la cartera con gasto anual después de la jubilación'
+              tPortfolio: 'Valor de la cartera con gasto anual después de la jubilación',
+              tAbout: 'Sobre',
+              tContact: 'Contacto'
             }
           }
         },
@@ -103,7 +107,9 @@ $(function () {
               mOutOfMoney: 'Com o valor anual de despesa irá ficar sem dinheiro aos ',
               tAnualSpending: 'Valor anual a despesa na reforma.',
               savings: 'Poupanças',
-              tPortfolio: 'Valor de despesa anual na reforma'
+              tPortfolio: 'Valor de despesa anual na reforma',
+              tAbout: 'Sobre',
+              tContact: 'Contacto'
             }
           }
         },
@@ -130,7 +136,9 @@ $(function () {
               mOutOfMoney: 'Mit dem jetzigen jährlichen Taschengeld geht Ihnen im Alter von ',
               tAnualSpending: 'Jährliche Nettoausgaben im Ruhestand.',
               savings: 'Ersparnisse',
-              tPortfolio: 'Portfoliowert mit jährlichen Ausgaben nach der Pensionierung'
+              tPortfolio: 'Portfoliowert mit jährlichen Ausgaben nach der Pensionierung',
+              tAbout: 'Über',
+              tContact: 'Kontakt'
             }
           }
         }

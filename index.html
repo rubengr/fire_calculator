@@ -8,6 +8,15 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/datatables.min.css">
     <link rel="stylesheet" href="css/_myStyle.css">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
     <script src="js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
@@ -32,107 +41,124 @@
     </script>
 </head>
 
-<body>
-    <center>
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top" data-i18n="intro.title"></a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="index.html" data-i18n="intro.title"></a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about.html" data-i18n="intro.tAbout"></a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact.html" data-i18n="intro.tContact"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- <center>
         <h1 data-i18n="intro.title"></h1>
-    </center>
-    
-    <div class="container">
-        <div class="row">
-            <div class="col-11">
+    </center> -->
+    <section class="page-section portfolio" id="portfolio"> 
+        <div class="container" >
+            <div class="row justify-content-center">
+                <div class="col-11">
+                </div>
+                <div class="col-1">
+                    <select class="form-select form-select-lg mb-3" style="width: 200px;" name="language" id="languageSwitcher" ></select>
+                </div>
+                    
             </div>
-            <div class="col-1">
-                <select class="form-select form-select-lg mb-3" style="width: 200px;" name="language" id="languageSwitcher" ></select>
+            <div class="row">
+                <div class="col-3">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.currency"></label>
+                    </div>
+                    <div>
+                        <select id="selectCurrency" class="form-select" onchange="currencyChange()">
+                            <option selected>Euro €</option>
+                            <option>Dolar $</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.anualspending"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" step="1" class="form-control" value="12000" id="anualSpending" title="Net anual spending in retirement.">
+                        <span class="input-group-text" id="currencyAnualSpending">€</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.anualreturn"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" step="1" class="form-control" value="8" id="returnPercentage" title="Expected anual return for investment.">
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.averageinflation"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" step="1" class="form-control" value="2" id="inflation">
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.taxes"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" step="1" class="form-control" value="28" id="taxes" title="Taxes after retirement when withdrawn anual spending.">
+                        <span class="input-group-text">%</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.initialmoney"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" class="form-control" value="20000" id="initialAssets" title="Value to start the investment">
+                        <span class="input-group-text" id="currencyinitialAssets">€</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.initialage"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" step="1" class="form-control" value="30" id="initialAge">
+                        <span class="input-group-text" data-i18n="intro.years"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.retirementage"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" step="1" class="form-control" value="60" id="finalAge">
+                        <span class="input-group-text" data-i18n="intro.years"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput" class="form-label" data-i18n="intro.anualsavings"></label>
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="number" min="0" step="1" class="form-control" value="2000" id="anualSavings" title="Anual savings to add every year to portfolio.">
+                        <span class="input-group-text" id="currencyAnualSavings">€</span>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" onclick="calcPortolio()" data-i18n="intro.calculateportfolio">
+                            
+                        </button>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <canvas id="myChart"></canvas>
+                    <div id="myPanel">
+
+                    </div>
+                    <!-- <section class="canvas-wrap">
+                        <canvas id="canvas" height="450" width="600"></canvas>
+                    </section> -->
+                    <div id = table-js></div>
+
+                </div>
             </div>
-                
+
         </div>
-        <div class="row">
-            <div class="col-3">
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.currency"></label>
-                </div>
-                <div>
-                    <select id="selectCurrency" class="form-select" onchange="currencyChange()">
-                        <option selected>Euro €</option>
-                        <option>Dolar $</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.anualspending"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" step="1" class="form-control" value="12000" id="anualSpending" title="Net anual spending in retirement.">
-                    <span class="input-group-text" id="currencyAnualSpending">€</span>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.anualreturn"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" step="1" class="form-control" value="8" id="returnPercentage" title="Expected anual return for investment.">
-                    <span class="input-group-text">%</span>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.averageinflation"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" step="1" class="form-control" value="2" id="inflation">
-                    <span class="input-group-text">%</span>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.taxes"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" step="1" class="form-control" value="28" id="taxes" title="Taxes after retirement when withdrawn anual spending.">
-                    <span class="input-group-text">%</span>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.initialmoney"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" class="form-control" value="20000" id="initialAssets" title="Value to start the investment">
-                    <span class="input-group-text" id="currencyinitialAssets">€</span>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.initialage"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" step="1" class="form-control" value="30" id="initialAge">
-                    <span class="input-group-text" data-i18n="intro.years"></span>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.retirementage"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" step="1" class="form-control" value="60" id="finalAge">
-                    <span class="input-group-text" data-i18n="intro.years"></span>
-                </div>
-                <div class="form-group">
-                    <label for="formGroupExampleInput" class="form-label" data-i18n="intro.anualsavings"></label>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="number" min="0" step="1" class="form-control" value="2000" id="anualSavings" title="Anual savings to add every year to portfolio.">
-                    <span class="input-group-text" id="currencyAnualSavings">€</span>
-                </div>
-                <div>
-                    <button class="btn btn-primary" onclick="calcPortolio()" data-i18n="intro.calculateportfolio">
-                        
-                    </button>
-                </div>
-            </div>
-            <div class="col-9">
-                <canvas id="myChart"></canvas>
-                <div id="myPanel">
-
-                </div>
-                <!-- <section class="canvas-wrap">
-                    <canvas id="canvas" height="450" width="600"></canvas>
-                </section> -->
-                <div id = table-js></div>
-
-            </div>
-        </div>
-
-    </div>
+    </section>  
     <script src="java.js"></script>
 </body>
 
