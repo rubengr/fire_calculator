@@ -95,7 +95,7 @@ $(function () {
               averageinflation: 'Inflação média',
               taxes: 'Imposto',
               initialmoney: 'Montante inicial',
-              initialage: 'Idade initial',
+              initialage: 'Idade inicial',
               retirementage: 'Idade FIRE',
               anualsavings: 'Reforço médio anual',
               anualsavingsWInflation: 'Poupança Anual c/ Inflação',
