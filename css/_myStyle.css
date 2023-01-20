@@ -23,3 +23,13 @@
     height: 500px;
     width:100%;
   }
+
+.sidebar{
+    display: inline-block;
+    width: 10%;
+}   
+
+#content{
+    display: inline-block;
+    width: 80%;
+}
