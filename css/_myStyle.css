@@ -24,7 +24,7 @@
     width:100%;
   }
 
-.sidebar{
+ .sidebar{
     display: inline-block;
     width: 10%;
 }   
@@ -32,4 +32,14 @@
 #content{
     display: inline-block;
     width: 80%;
+} 
+.container_rb {
+  display: inline-block;
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  width: 80%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
 }
