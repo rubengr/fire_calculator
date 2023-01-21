@@ -1,9 +1,9 @@
-const ctx = document.getElementById("myChart");
-
 let oController = {
-    flag: false,
-    yeartozero: 0
+  flag: false,
+  yeartozero: 0
 }
+
+const ctx = document.getElementById("myChart");
 
 const DATA_COUNT = 12;
 let labels = [];
@@ -33,6 +33,8 @@ let data = {
     }
   ],
 };
+
+let graphic;
 
 function createChart() {
   return new Chart(ctx, {
@@ -69,7 +71,91 @@ function createChart() {
   });
 }
 
-let graphic = createChart();
+function index_page() {
+  
+
+  graphic = createChart();
+
+  i18next.on('languageChanged', () => {
+    graphic.data.datasets[0].label = i18next.t('intro.savings')
+    graphic.data.datasets[1].label = i18next.t('intro.tPortfolio')
+    if (oController.flag) {
+      closeAlert();
+      showAlert(i18next.t('intro.mOutOfMoney') + oController.yeartozero);
+    }
+
+    graphic.update()
+  });
+
+}
+
+function currencyChange() {
+  var currency = document.getElementById("selectCurrency").value;
+  switch (currency) {
+    case "Euro €":
+      document.getElementById("currencyAnualSpending").innerText = "€";
+      document.getElementById("currencyinitialAssets").innerText = "€";
+      document.getElementById("currencyAnualSavings").innerText = "€";
+      break;
+    case "Dolar $":
+      document.getElementById("currencyAnualSpending").innerText = "$";
+      document.getElementById("currencyinitialAssets").innerText = "$";
+      document.getElementById("currencyAnualSavings").innerText = "$";
+      break;
+
+    default:
+      break;
+  }
+}
+
+function createTable(fire) {
+  //set header of table
+  let tableData = document.getElementById("table-js");
+  let table = `
+  <table  id = "myTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+  <thead>
+      <tr>
+          <th scope="col" data-i18n="intro.year"></th>
+          <th scope="col" data-i18n="intro.anualsavingsWInflation"></th>
+          <th scope="col" data-i18n="intro.anualspendingWInflation"></th>
+          <th scope="col" data-i18n="intro.totalinvested">Total invested </th>
+          <th scope="col"data-i18n="intro.portfolio">Portfolio</th>
+      </tr>
+  </thead>
+  <tbody>
+  `;
+  //create//append rows
+  for (i = 0; i < fire.length; i++) {
+    table =
+      table +
+      `<tr>
+      <th scope="row">${fire[i].age}</th>
+      <td>${fire[i].anualSavings.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      })}
+      </td>
+        <td>${fire[i].anualSpending.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      })}
+        </td>
+      <td>${fire[i].savings.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      })}
+      </td>
+      <td>${fire[i].portfolioWSavings.toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+      })}
+      </td>
+      </tr>`;
+  }
+  //close off table
+  table =
+    table +
+    `</tbody>
+  </table>`;
+
+  tableData.innerHTML = table;
+}
 
 function calcPortolio() {
   const returnPercentage = parseInt(
@@ -209,79 +295,3 @@ function deleteTable() {
   let table = document.querySelector("#table-js");
   table.replaceChildren();
 }
-
-function currencyChange() {
-  var currency = document.getElementById("selectCurrency").value;
-  switch (currency) {
-    case "Euro €":
-      document.getElementById("currencyAnualSpending").innerText = "€";
-      document.getElementById("currencyinitialAssets").innerText = "€";
-      document.getElementById("currencyAnualSavings").innerText = "€";
-      break;
-    case "Dolar $":
-      document.getElementById("currencyAnualSpending").innerText = "$";
-      document.getElementById("currencyinitialAssets").innerText = "$";
-      document.getElementById("currencyAnualSavings").innerText = "$";
-      break;
-
-    default:
-      break;
-  }
-}
-
-function createTable(fire) {
-  //set header of table
-  let tableData = document.getElementById("table-js");
-  let table = `
-    <table  id = "myTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
-    <thead>
-        <tr>
-            <th scope="col" data-i18n="intro.year"></th>
-            <th scope="col" data-i18n="intro.anualsavingsWInflation"></th>
-            <th scope="col" data-i18n="intro.anualspendingWInflation"></th>
-            <th scope="col" data-i18n="intro.totalinvested">Total invested </th>
-            <th scope="col"data-i18n="intro.portfolio">Portfolio</th>
-        </tr>
-    </thead>
-    <tbody>
-    `;
-  //create//append rows
-  for (i = 0; i < fire.length; i++) {
-    table =
-      table +
-      `<tr>
-        <th scope="row">${fire[i].age}</th>
-        <td>${fire[i].anualSavings.toLocaleString(undefined, {
-          minimumFractionDigits: 2,})}
-        </td>
-          <td>${fire[i].anualSpending.toLocaleString(undefined, {
-            minimumFractionDigits: 2,})}
-          </td>
-        <td>${fire[i].savings.toLocaleString(undefined, {
-          minimumFractionDigits: 2,})}
-        </td>
-        <td>${fire[i].portfolioWSavings.toLocaleString(undefined, {
-          minimumFractionDigits: 2,})}
-        </td>
-        </tr>`;
-  }
-  //close off table
-  table =
-    table +
-    `</tbody>
-    </table>`;
-
-  tableData.innerHTML = table;
-}
-
-i18next.on('languageChanged', () => {
-  graphic.data.datasets[0].label = i18next.t('intro.savings')
-  graphic.data.datasets[1].label = i18next.t('intro.tPortfolio')
-  if (oController.flag){
-    closeAlert();
-    showAlert(i18next.t('intro.mOutOfMoney') + oController.yeartozero);
-  }
-    
-  graphic.update()
-});
-
